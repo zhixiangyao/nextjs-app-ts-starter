@@ -14,9 +14,21 @@
     "------- 🌕 FORMAT -------": "",
     "lint:check": "next lint",
     "lint": "npm run lint:prettier && npm run lint:eslint && npm run lint:stylelint",
-    "lint:prettier": "prettier --cache --write --log-level warn \"src/**/*.{js,json,tsx,css,html,md}\"",
-    "lint:eslint": "eslint --fix \"src/**/*.{ts,tsx}\" --cache --cache-location node_modules/.cache/eslint/",
-    "lint:stylelint": "stylelint --fix \"src/**/*.css\" --cache --cache-location node_modules/.cache/stylelint/"
+    "lint:prettier": "prettier --cache --write --log-level warn \"./**/*.{js,mjs,json,ts,tsx,css,html,md}\"",
+    "lint:eslint": "eslint --fix \"./**/*.{js,mjs,ts,tsx}\" --cache --cache-location node_modules/.cache/eslint/",
+    "lint:stylelint": "stylelint --fix \"./**/*.{tsx,css}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "./**/*.{js,mjs,json,ts,tsx,css,html,md}": [
+      "npx prettier --cache --write --log-level warn"
+    ],
+    "./**/*.{js,mjs,ts,tsx}": [
+      "npx eslint --fix --cache --cache-location node_modules/.cache/eslint/"
+    ],
+    "./**/*.{tsx,css}": [
+      "npx stylelint --fix --cache --cache-location node_modules/.cache/stylelint/"
+    ]
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.0.2",
@@ -43,6 +55,7 @@
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-prettier": "5.1.2",
     "eslint-plugin-react-hooks": "4.6.0",
+    "lint-staged": "15.2.0",
     "postcss": "8.4.32",
     "prettier": "3.1.1",
     "prettier-plugin-tailwindcss": "0.5.10",
