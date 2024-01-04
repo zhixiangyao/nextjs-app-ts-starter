@@ -1,14 +1,12 @@
 # nextjs-app-ts-starter
 
-This template will help you start developing in NextJs using React [Shadcn-ui](https://ui.shadcn.com) Zustand TypeScript TailwindCSS.
+This template will help you start developing in `NextJs` using `React` `Shadcn-ui` `Zustand` `TypeScript` `TailwindCSS`.
 
 **Libraries**
 
-- `zustand` State management library
-- `lucide-react` Icon library
-- `tailwindcss-animate` Tailwindcss animate library
-- `class-variance-authority` A JavaScript library for calculating and evaluating the variance contribution of categorical variables.
-- `clsx` Merge library of `className`
+- `zustand`: State management
+- `lucide-react`: Icon
+- `clsx`: Merge `className`
 
 **Editor:**
 
@@ -38,3 +36,25 @@ First, run the development server:
 ```bash
 pnpm dev
 ```
+
+## Use Shadcn UI
+
+Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source. Get Started. [Shadcn Document](https://ui.shadcn.com)
+
+```bash
+pnpm dlx shadcn-ui@latest add button
+```
+
+**Usage**
+
+```tsx
+import { Button } from '@/components/ui/button'
+```
+
+```tsx
+<Button variant="outline">Button</Button>
+```
+
+### Config
+
+The `components.json` file holds configuration for your project.
