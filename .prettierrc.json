@@ -14,11 +14,6 @@
   "proseWrap": "never",
   "htmlWhitespaceSensitivity": "strict",
   "endOfLine": "lf",
-  "tailwindFunctions": [
-    "clsx",
-    "cn"
-  ],
-  "plugins": [
-    "prettier-plugin-tailwindcss"
-  ]
+  "tailwindFunctions": ["clsx", "cn"],
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
