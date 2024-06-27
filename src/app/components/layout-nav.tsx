@@ -27,7 +27,7 @@ const LayoutNav = forwardRef<HTMLElement, Props>(({ className, ...props }, ref) 
       )}
       {...props}
     >
-      <div className="sticky top-0 z-[1] flex h-[70px]  select-none items-center overflow-hidden px-0 text-[25px] text-white">
+      <div className="sticky top-0 z-[1] flex h-[70px] select-none items-center overflow-hidden px-0 text-[25px] text-white">
         <div className="cursor-pointer px-7 py-[27px]">
           <MoreHorizontal />
         </div>
