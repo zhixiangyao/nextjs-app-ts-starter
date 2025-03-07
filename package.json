@@ -2,74 +2,72 @@
   "name": "nextjs-app-ts-starter",
   "version": "0.1.0",
   "author": "zhixiangyao <blueskyzx@icloud.com> <https://github.com/zhixiangyao>",
+  "license": "MIT",
+  "homepage": "https://github.com/zhixiangyao/nextjs-app-ts-starter",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhixiangyao/nextjs-app-ts-starter.git"
   },
-  "homepage": "https://github.com/zhixiangyao/nextjs-app-ts-starter",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  },
   "scripts": {
     "dev": "next dev -p 8099",
     "build": "next build",
     "start": "next start -p 8099",
     "------- 🌕 FORMAT -------": "",
-    "lint:check": "next lint",
-    "lint": "npm run lint:prettier && npm run lint:eslint && npm run lint:stylelint",
-    "lint:prettier": "prettier --cache --write --log-level warn \"./**/*.{js,mjs,json,ts,tsx,css,html,md}\"",
-    "lint:eslint": "eslint --fix \"./**/*.{js,mjs,ts,tsx}\" --cache --cache-location node_modules/.cache/eslint/",
-    "lint:stylelint": "stylelint --fix \"./**/*.{tsx,css}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint": "next lint",
+    "lint:stylelint": "stylelint \"./**/*.{tsx,css}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint-staged": "lint-staged",
-    "prepare": "husky"
-  },
-  "lint-staged": {
-    "./**/*.{js,mjs,json,ts,tsx,css,html,md}": [
-      "npx prettier --cache --write --log-level warn"
-    ],
-    "./**/*.{js,mjs,ts,tsx}": [
-      "npx eslint --fix --cache --cache-location node_modules/.cache/eslint/"
-    ],
-    "./**/*.{tsx,css}": [
-      "npx stylelint --fix --cache --cache-location node_modules/.cache/stylelint/"
-    ]
+    "postinstall": "simple-git-hooks"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "1.1.0",
-    "class-variance-authority": "0.7.0",
+    "@radix-ui/react-slot": "1.1.2",
+    "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "lucide-react": "0.427.0",
-    "next": "14.2.5",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "lucide-react": "0.477.0",
+    "next": "15.2.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "tailwind-merge": "2.4.0",
-    "zustand": "4.5.4"
+    "zustand": "5.0.3"
   },
   "devDependencies": {
-    "@types/node": "20.14.14",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
-    "@typescript-eslint/eslint-plugin": "8.0.1",
-    "@typescript-eslint/parser": "8.0.1",
+    "@antfu/eslint-config": "4.6.0",
+    "@eslint-react/eslint-plugin": "1.31.0",
+    "@eslint/eslintrc": "3.3.0",
+    "@eslint/js": "^9.21.0",
+    "@next/eslint-plugin-next": "15.2.1",
+    "@types/node": "22.13.9",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
+    "@typescript-eslint/eslint-plugin": "8.26.0",
     "autoprefixer": "10.4.20",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.2.5",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-prettier": "5.2.1",
-    "eslint-plugin-react-hooks": "4.6.2",
-    "husky": "9.1.4",
-    "lint-staged": "15.2.8",
-    "postcss": "8.4.41",
-    "prettier": "3.3.3",
-    "prettier-plugin-tailwindcss": "0.6.5",
-    "stylelint": "16.8.1",
-    "stylelint-config-standard": "36.0.1",
+    "eslint": "9.21.0",
+    "eslint-plugin-format": "^1.0.1",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "eslint-plugin-react-refresh": "0.4.19",
+    "lint-staged": "15.4.3",
+    "postcss": "8.5.3",
+    "postcss-load-config": "6.0.1",
+    "simple-git-hooks": "2.11.1",
+    "stylelint": "16.15.0",
+    "stylelint-config-standard": "37.0.0",
     "stylelint-order": "6.0.4",
     "tailwindcss": "3.4.9",
     "tailwindcss-animate": "1.0.7",
-    "typescript": "5.5.4"
+    "typescript": "5.8.2"
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">=20",
-    "pnpm": ">=9"
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --cache --cache-location node_modules/.cache/eslint/"
+    ],
+    "./**/*.{tsx,css}": [
+      "stylelint --cache --cache-location node_modules/.cache/stylelint/"
+    ]
   }
 }
