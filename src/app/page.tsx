@@ -5,7 +5,7 @@ export const metadata = {
   title: 'Home',
 }
 
-const RootPage = async () => {
+async function RootPage() {
   return (
     <div>
       <BearControls />

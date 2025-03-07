@@ -2,7 +2,7 @@ export const metadata = {
   title: 'Test Plan',
 }
 
-const TestPlanPage = async () => {
+async function TestPlanPage() {
   return (
     <div>
       <h1>Test Plan</h1>

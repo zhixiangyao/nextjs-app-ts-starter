@@ -1,14 +1,18 @@
 'use client'
 
-import { Fragment, forwardRef } from 'react'
-import Link from 'next/link'
-import { useSelectedLayoutSegments } from 'next/navigation'
-
+import type { RefObject } from 'react'
 import { cn, stringCapitalization } from '@/lib/utils'
+import Link from 'next/link'
 
-type Props = React.HTMLAttributes<HTMLElement>
+import { useSelectedLayoutSegments } from 'next/navigation'
+import { Fragment } from 'react'
 
-const LayoutHeader = forwardRef<HTMLElement, Props>(({ className, children, ...props }, ref) => {
+type Props = {
+  className?: string
+  ref?: RefObject<HTMLElement>
+}
+
+function LayoutHeader({ ref, className }: Props) {
   const segments = useSelectedLayoutSegments()
 
   return (
@@ -17,27 +21,27 @@ const LayoutHeader = forwardRef<HTMLElement, Props>(({ className, children, ...p
       className={cn(
         'col-span-header row-span-header',
         'flex items-center justify-start bg-white pl-3.5 shadow-[0_0_5px_0_rgb(0_0_0_/_20%)]',
+        className,
       )}
-      {...props}
     >
       <Link className="rounded-sm px-1 hover:bg-gray-200" href="/">
         Home
       </Link>
-      {segments.map((segment) => (
+      {segments.map(segment => (
         <Fragment key={segment}>
           <span className="select-none text-gray-400">/</span>
 
           <Link className="rounded-sm px-1 hover:bg-gray-200" href={`/${segment}`}>
             {segment
               .split('-')
-              .map((v) => stringCapitalization(v))
+              .map(v => stringCapitalization(v))
               .join(' ')}
           </Link>
         </Fragment>
       ))}
     </header>
   )
-})
+}
 LayoutHeader.displayName = 'LayoutHeader'
 
 export { LayoutHeader }

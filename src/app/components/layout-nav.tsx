@@ -1,32 +1,26 @@
 'use client'
 
-import { forwardRef } from 'react'
-import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
-
+import type { RefObject } from 'react'
 import { cn } from '@/lib/utils'
+
 import { useStoreState } from '@/store/hooks'
 import useLayoutStore from '@/store/useLayoutStore'
+import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
 
 import { Menu } from './menu'
 
-type Props = React.HTMLAttributes<HTMLElement>
+type Props = {
+  className?: string
+  ref?: RefObject<HTMLElement>
+}
 
-const LayoutNav = forwardRef<HTMLElement, Props>(({ className, ...props }, ref) => {
-  const navExpand = useStoreState(useLayoutStore, (state) => state.navExpand)
-  const navMenuExpand = useStoreState(useLayoutStore, (state) => state.navMenuExpand)
+function LayoutNav({ ref, className }: Props) {
+  const navExpand = useStoreState(useLayoutStore, state => state.navExpand)
 
-  const toggleNav = useLayoutStore((state) => state.toggleNav)
-  const toggleNavMenu = useLayoutStore((state) => state.toggleNavMenu)
+  const toggleNav = useLayoutStore(state => state.toggleNav)
 
   return (
-    <nav
-      ref={ref}
-      className={cn(
-        'col-span-nav row-span-nav flex flex-col justify-between bg-blue-800',
-        className,
-      )}
-      {...props}
-    >
+    <nav ref={ref} className={cn('col-span-nav row-span-nav flex flex-col justify-between bg-blue-800', className)}>
       <div className="sticky top-0 z-[1] flex h-[70px] select-none items-center overflow-hidden px-0 text-[25px] text-white">
         <div className="cursor-pointer px-7 py-[27px]">
           <MoreHorizontal />
@@ -45,7 +39,7 @@ const LayoutNav = forwardRef<HTMLElement, Props>(({ className, ...props }, ref) 
       </div>
     </nav>
   )
-})
+}
 LayoutNav.displayName = 'LayoutNav'
 
 export { LayoutNav }

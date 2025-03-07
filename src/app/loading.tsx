@@ -1,4 +1,4 @@
-const Loading = () => {
+function Loading() {
   return <div className="">Loading...</div>
 }
 

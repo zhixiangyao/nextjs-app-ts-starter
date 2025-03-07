@@ -1,12 +1,14 @@
-import { type ClassValue, clsx } from 'clsx'
+import type { ClassValue } from 'clsx'
+import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-export const cn = (...inputs: ClassValue[]) => {
+export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const stringCapitalization = (str: string, scope: [number, number] = [0, 0]) => {
-  if (!str) return ''
+export function stringCapitalization(str: string, scope: [number, number] = [0, 0]) {
+  if (!str)
+    return ''
 
   const list = [...str]
 
@@ -19,17 +21,18 @@ export const stringCapitalization = (str: string, scope: [number, number] = [0, 
   }, '')
 }
 
-export const stringPluralize = (num: number, word: string) => {
+export function stringPluralize(num: number, word: string) {
   if (num === 1) {
     return word
-  } else {
-    return word + 's'
+  }
+  else {
+    return `${word}s`
   }
 }
 
-export const parseWithDate = (data: string) => {
-  const ISO_DATE_FORMAT =
-    /^\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d(\.\d+)?(Z|[+-][01]\d:[0-5]\d)$/
+export function parseWithDate(data: string) {
+  const ISO_DATE_FORMAT
+    = /^\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d(\.\d+)?(Z|[+-][01]\d:[0-5]\d)$/
 
   return JSON.parse(data, (_: unknown, value: unknown) => {
     if (typeof value === 'string' && ISO_DATE_FORMAT.test(value)) {

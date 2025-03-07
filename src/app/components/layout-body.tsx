@@ -1,15 +1,18 @@
 'use client'
 
-import { forwardRef } from 'react'
+import type { PropsWithChildren, RefObject } from 'react'
 
-import useLayoutStore from '@/store/useLayoutStore'
-import { useStoreState } from '@/store/hooks'
 import { cn } from '@/lib/utils'
+import { useStoreState } from '@/store/hooks'
+import useLayoutStore from '@/store/useLayoutStore'
 
-type Props = React.HTMLAttributes<HTMLBodyElement>
+type Props = PropsWithChildren<{
+  className?: string
+  ref?: RefObject<HTMLBodyElement>
+}>
 
-const LayoutBody = forwardRef<HTMLBodyElement, Props>(({ className, children, ...props }, ref) => {
-  const navExpand = useStoreState(useLayoutStore, (state) => state.navExpand)
+function LayoutBody({ ref, className, children }: Props) {
+  const navExpand = useStoreState(useLayoutStore, state => state.navExpand)
 
   return (
     <body
@@ -20,12 +23,11 @@ const LayoutBody = forwardRef<HTMLBodyElement, Props>(({ className, children, ..
         'transition-all',
         className,
       )}
-      {...props}
     >
       {children}
     </body>
   )
-})
+}
 LayoutBody.displayName = 'LayoutBody'
 
 export { LayoutBody }

@@ -5,7 +5,7 @@ const initialStates = {
   bears: 0,
 }
 
-interface BearState {
+type BearState = {
   bears: number
   increasePopulation: () => void
   removeAllBears: () => void
@@ -13,9 +13,9 @@ interface BearState {
 
 const useBearStore = create<BearState>()(
   persist(
-    (set) => ({
+    set => ({
       bears: initialStates.bears,
-      increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+      increasePopulation: () => set(state => ({ bears: state.bears + 1 })),
       removeAllBears: () => set({ bears: initialStates.bears }),
     }),
     {

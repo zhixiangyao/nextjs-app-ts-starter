@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       gridTemplateColumns: {
-        layout: '80px repeat(9, minmax(0, 1fr))',
+        'layout': '80px repeat(9, minmax(0, 1fr))',
         'layout-expand': '200px repeat(9, minmax(0, 1fr))',
       },
       gridTemplateRows: {

@@ -5,7 +5,7 @@ const initialStates = {
   navMenuExpand: false,
 }
 
-interface LayoutState {
+type LayoutState = {
   navExpand: boolean
   toggleNav: () => void
 
@@ -13,12 +13,12 @@ interface LayoutState {
   toggleNavMenu: () => void
 }
 
-const useLayoutStore = create<LayoutState>()((set) => ({
+const useLayoutStore = create<LayoutState>()(set => ({
   navExpand: initialStates.navExpand,
-  toggleNav: () => set((state) => ({ navExpand: !state.navExpand })),
+  toggleNav: () => set(state => ({ navExpand: !state.navExpand })),
 
   navMenuExpand: initialStates.navMenuExpand,
-  toggleNavMenu: () => set((state) => ({ navMenuExpand: !state.navMenuExpand })),
+  toggleNavMenu: () => set(state => ({ navMenuExpand: !state.navMenuExpand })),
 }))
 
 export default useLayoutStore

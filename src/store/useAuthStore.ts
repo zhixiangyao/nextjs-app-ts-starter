@@ -7,7 +7,7 @@ const initialStates = {
   token: null,
 }
 
-interface AuthState {
+type AuthState = {
   isAuthenticated: boolean
   user: {
     id: string
@@ -24,7 +24,7 @@ interface AuthState {
 
 const useAuthStore = create<AuthState>()(
   persist(
-    (set) => ({
+    set => ({
       isAuthenticated: initialStates.isAuthenticated,
       user: initialStates.user,
       token: initialStates.token,
